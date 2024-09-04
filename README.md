@@ -1,106 +1,74 @@
-# Basic MERN App
+## MERN Dockerized Application
 
-![my picture](https://doananhtingithub40102.github.io/MyData/mern/mypicture.png)
 
-A full-stack [MERN](https://www.mongodb.com/mern-stack) application for managing information of employees.
+A full-stack MERN (MongoDB, Express, React, Node.js) application that is containerized using Docker and Docker Compose.
 
-## About the project
+## Table of Contents
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [How to Run the Project](#how-to-run-the-project)
+- [Environment Variables](#environment-variables)
+- [Screenshots](#screenshots)
 
-This is a full-stack MERN application that manages the basic information of employees. The app uses an employee database from the MongoDB Atlas database and then display it using a React.
+## Technologies Used
 
-## Tech Stack
+- **MongoDB**: Database to store records.
+- **Express**: Backend framework to handle requests.
+- **React**: Frontend framework for building the UI.
+- **Node.js**: Runtime environment for server-side execution.
+- **Docker**: Container platform to run the application.
+- **Docker Compose**: To orchestrate the multi-container application.
+- **Nginx**: Web server to serve the React frontend.
 
-**Client:** React, Bootstrap
-
-**Server:** NodeJS, ExpressJS
-
-**Database:** MongoDB
-
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/doananhtingithub40102/mern-app.git
-```
-
-Go to the project directory
+## Project Structure
 
 ```bash
-  cd mern-app
+.
+├── client                  # Frontend React application
+├── server                  # Backend Node.js and Express application
+├── mongo-init.js           # MongoDB initialization script
+└── docker-compose.yml      # Docker Compose configuration
 ```
 
-Create an Atlas URI connection parameter in `server/.env` with your Atlas URI:
-```
-ATLAS_URI="mongodb+srv://<username>:<password>@cluster0.6cgz2s1.mongodb.net/?retryWrites=true&w=majority"
-PORT=5000
-```
+## How to Run the Project
 
-Create an hostname on server enviroment variable in `client/.env` with your hostname on server:
-```
-REACT_APP_YOUR_HOSTNAME="http://localhost:5000"
-```
-
-Install dependencies
+### 1. Clone the repository:
 
 ```bash
-  cd server
-  npm install
+git clone https://github.com/phsinghka/dockerized-mern-stack.git
+cd dockerized-mern-stack
 ```
+
+### 2. Run Docker Compose:
 
 ```bash
-  cd client
-  npm install
+docker-compose up --build
 ```
 
-Start the server
+- This will start three containers: `client` (React), `server` (Node.js), and `mongo` (MongoDB).
 
-```bash
-  cd server
-  node server.js
-```
-Start the Client
+### 3. Access the application:
 
-```bash
-  cd client
-  npm start
-```
-  
+- **Frontend**: `http://localhost:80`
+- **Backend API**: `http://localhost:5000`
 
-## Features in the project
+## Environment Variables
 
-- The user can **create** the information of a employee, and managing it.
+- `ATLAS_URI`: MongoDB connection string used by the backend.
+- `PORT`: Port for the backend server.
+- `REACT_APP_YOUR_HOSTNAME`: Backend API URL for the frontend.
 
-- **Displaying** the information of employees, including the name, position, and level of the employee.
+## Screenshots
 
-- Includes **Update** and **Delete** actions.
+### Home Page
 
-## Learn More
+![Home Page](./screenshots/create-records.png)
 
-**FrontEnd**
+### Running Containers
 
-* To learn React, check out the [React documentation](https://reactjs.org/).
+![Containers](./screenshots/contianers.png)
 
-* You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Docker Server Logs
 
-* Get started with [Bootstrap](https://www.w3schools.com/bootstrap5/index.php), the world's most popular framework for building responsive, mobile-first websites.
+![Server Logs](./screenshots/server-logs.png)
 
-**BackEnd**
-
-* [Node.js Tutorial](https://www.w3schools.com/nodejs/default.asp)
-
-* [ExpressJS Tutorial](https://www.tutorialspoint.com/expressjs/index.htm)
-
-**Database**
-
-* [MongoDB Tutorial](https://www.w3schools.com/mongodb/)
-
-* Follow the [Get Started with MongoDB Atlas](https://www.mongodb.com/docs/atlas/getting-started/) guide to create an Atlas cluter, connecting to it, and loading your data.
-
-**Fullstack**
-
-* Learn all about the [MERN stack](https://www.mongodb.com/languages/mern-stack-tutorial) in this step-by-step guide on how to use it by developing a simple CRUD application from scratch.
-
-## Live app
-
-<a href="https://employee-manager-tindoan-xu3i.onrender.com/">Live fullstack MERN app</a>
