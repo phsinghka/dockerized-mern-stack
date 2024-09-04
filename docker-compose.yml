@@ -1,0 +1,33 @@
+---
+
+version: '3'
+services: 
+  server: 
+    build: ./server
+    ports: 
+      - 5000:5000
+    environment: 
+      - ATLAS_URI=mongodb://myLocalUser:myLocalPassword@mongo:27017/mernDatabase
+      - PORT=5000
+    depends_on:
+      - mongo
+
+  client:
+    build: ./client
+    ports: 
+      - 80:80
+    environment:
+      - REACT_APP_YOUR_HOSTNAME="http://server:5000"
+    depends_on:
+      - server
+
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
